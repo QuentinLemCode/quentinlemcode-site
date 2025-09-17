@@ -48,14 +48,14 @@ export default {
       
       const data = await tokenResp.json();
 
-      const responseBody = renderBody('success', {
+      const responseBody = renderBody({
         token: data.access_token,
         provider: 'github',
         status: 'success',
-    });
+      });
 
       return new Response(responseBody, {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/html;charset=UTF-8" },
       });
     }
 
