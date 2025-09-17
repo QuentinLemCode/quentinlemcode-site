@@ -1,16 +1,19 @@
 function renderBody(status, content) {
   const html = `
-  <script>
-    const receiveMessage = (message) => {
-      window.opener.postMessage(
-        'authorization:github:${status}:${JSON.stringify(content)}',
-        message.origin
-      );
-      window.removeEventListener("message", receiveMessage, false);
-    }
-    window.addEventListener("message", receiveMessage, false);
-    window.opener.postMessage("authorizing:github", "*");
-  </script>
+    <script>
+      const receiveMessage = (message) => {
+        console.log('receiveMessage', message);
+        window.opener.postMessage(
+          'authorization:github:${status}:${JSON.stringify({ token })}',
+          message.origin
+        );
+
+        window.removeEventListener("message", receiveMessage, false);
+      }
+      window.addEventListener("message", receiveMessage, false);
+
+      window.opener.postMessage("authorizing:github", "*");
+    </script>
   `;
   const blob = new Blob([html]);
   return blob;
@@ -51,8 +54,7 @@ export default {
     });
 
       return new Response(responseBody, {
-        headers: { "Content-Type": "text/html;charset=UTF-8" },
-        status: 200,
+        headers: { "Content-Type": "application/json" },
       });
     }
 
