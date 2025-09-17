@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Nice. It's looking good already.</h1>
-  </body>
-</html>
+{{ define "main" }}
+  <article class="cf ph3 ph5-l pv4 f4 tc-l center measure-wide lh-copy nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }}">
+    {{ .Content }}
+    {{ with .Params.cta_text }}
+      <div class="mt4">
+        <a class="btn-cta dib pv3 ph4 white no-underline br2" href="{{ $.Params.cta_url | compare.Default "#" }}">
+          {{ . }}
+        </a>
+      </div>
+    {{ end }}
+  </article>
+
+  {{ with .Params.features }}
+    <section class="pa3 pa4-ns w-100 w-70-ns center">
+      <div class="cf">
+        {{ range . }}
+          <div class="fl w-100 w-50-m w-33-l pa2">
+            <div class="card br2 pa3 h-100 bg-white">
+              <h3 class="f4 mt0 mb2">{{ .title }}</h3>
+              {{ with .text }}<p class="mid-gray">{{ . }}</p>{{ end }}
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

@@ -2,3 +2,12 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'ananke'
+
+[params]
+  description = 'Développeur — sites rapides et élégants.'
+  background_color_class = 'bg-near-white'
+  text_color = 'near-black'
+  body_classes = 'avenir bg-near-white'
+
+  [params.ananke]
+    show_recent_posts = false

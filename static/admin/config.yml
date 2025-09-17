@@ -17,5 +17,40 @@ collections:
         name: "accueil"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
+          - {
+              label: "Description",
+              name: "description",
+              widget: "string",
+              required: false,
+            }
+          - {
+              label: "Image mise en avant",
+              name: "featured_image",
+              widget: "image",
+              required: false,
+            }
+          - {
+              label: "Texte du bouton",
+              name: "cta_text",
+              widget: "string",
+              required: false,
+            }
+          - {
+              label: "Lien du bouton",
+              name: "cta_url",
+              widget: "string",
+              required: false,
+            }
+          - label: "Fonctionnalités"
+            name: "features"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - {
+                  label: "Texte",
+                  name: "text",
+                  widget: "text",
+                  required: false,
+                }
           - { label: "Contenu", name: "body", widget: "markdown" }
-
