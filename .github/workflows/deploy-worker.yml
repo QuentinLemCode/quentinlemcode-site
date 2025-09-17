@@ -20,7 +20,7 @@ jobs:
         run: npm install -g wrangler
 
       - name: Deploy Worker
-        run: wrangler publish --config ./workers/decap-oauth/wrangler.toml
+        run: wrangler deploy --config ./workers/decap-oauth/wrangler.toml
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
