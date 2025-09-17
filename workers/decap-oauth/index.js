@@ -1,4 +1,4 @@
-function renderBody(status, content) {
+function renderBody({status, token}) {
   const html = `
     <script>
       const receiveMessage = (message) => {
@@ -51,6 +51,7 @@ export default {
       const responseBody = renderBody('success', {
         token: data.access_token,
         provider: 'github',
+        status: 'success',
     });
 
       return new Response(responseBody, {
