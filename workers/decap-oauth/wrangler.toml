@@ -5,3 +5,5 @@ compatibility_date = "2025-09-15"
 [vars]
 REDIRECT_URI = "https://quentinlemcode-site-cms-oauth.quentinlemcode-cloudflare.workers.dev/callback"
 
+[observability.logs]
+enabled = true
