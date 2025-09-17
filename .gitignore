@@ -1,0 +1,22 @@
+# Hugo build output
+/public/
+/resources/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+/node_modules/
+/package-lock.json
+/yarn.lock
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env files (si tu en utilises)
+.env
+.env.*
+
