@@ -1,3 +1,22 @@
+function renderBody(status, content) {
+  const html = `
+  <script>
+    const receiveMessage = (message) => {
+      window.opener.postMessage(
+        'authorization:github:${status}:${JSON.stringify(content)}',
+        message.origin
+      );
+      window.removeEventListener("message", receiveMessage, false);
+    }
+    window.addEventListener("message", receiveMessage, false);
+    window.opener.postMessage("authorizing:github", "*");
+  </script>
+  `;
+  const blob = new Blob([html]);
+  return blob;
+}
+
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -23,10 +42,17 @@ export default {
           redirect_uri: env.REDIRECT_URI,
         }),
       });
+      
       const data = await tokenResp.json();
 
-      return new Response(JSON.stringify(data), {
-        headers: { "Content-Type": "application/json" },
+      const responseBody = renderBody('success', {
+        token: data.access_token,
+        provider: 'github',
+    });
+
+      return new Response(responseBody, {
+        headers: { "Content-Type": "text/html;charset=UTF-8" },
+        status: 200,
       });
     }
 
