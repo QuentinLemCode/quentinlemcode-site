@@ -21,10 +21,10 @@ jobs:
 
       - name: Build Hugo site
         run: hugo --minify
+
       - name: Deploy
-        steps:
-          uses: cloudflare/wrangler-action@v3
-          with:
-            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-            command: pages deploy ./public --project-name=quentinlemcode-site
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: pages deploy ./public --project-name=quentinlemcode-site
 
