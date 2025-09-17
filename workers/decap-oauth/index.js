@@ -4,7 +4,7 @@ export default {
 
     if (url.pathname === "/auth") {
       return Response.redirect(
-        `https://github.com/login/oauth/authorize?client_id=${env.GITHUB_CLIENT_ID}&scope=repo,user&redirect_uri=${env.REDIRECT_URI}`,
+        `https://github.com/login/oauth/authorize?client_id=${env.GH_CLIENT_ID}&scope=repo,user&redirect_uri=${env.REDIRECT_URI}`,
         302
       );
     }
@@ -17,8 +17,8 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
-          client_id: env.GITHUB_CLIENT_ID,
-          client_secret: env.GITHUB_CLIENT_SECRET,
+          client_id: env.GH_CLIENT_ID,
+          client_secret: env.GH_CLIENT_SECRET,
           code,
           redirect_uri: env.REDIRECT_URI,
         }),
