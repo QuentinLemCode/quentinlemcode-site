@@ -1,7 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
   repo: QuentinLemCode/quentinlemcode-site
   branch: main
+  base_url: https://quentinlemcode-site-cms-oauth.quentinlemcode-cloudflare.workers.dev/
+  auth_endpoint: auth
 
 media_folder: "static/uploads"
 public_folder: "/uploads"

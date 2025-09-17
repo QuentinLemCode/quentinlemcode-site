@@ -1,0 +1,9 @@
+name = "quentinlemcode-site-cms-oauth"
+main = "index.js"
+compatibility_date = "2025-09-15"
+
+[vars]
+GITHUB_CLIENT_ID = "$GH_CLIENT_ID"
+GITHUB_CLIENT_SECRET = "$GH_CLIENT_SECRET"
+REDIRECT_URI = "https://quentinlemcode-site-cms-oauth.quentinlemcode-cloudflare.workers.dev/callback"
+
