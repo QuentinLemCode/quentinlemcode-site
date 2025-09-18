@@ -1,0 +1,26 @@
+{{/*
+	GetFeaturedImage (override)
+
+	Return a RELATIVE url for the featured image so it works in dev and prod
+	regardless of baseURL. Mirrors the theme logic but uses urls.RelURL.
+*/}}
+
+{{ $linkToCover := "" }}
+{{ $matches := "feature,cover" }}
+
+{{ with .Params.featured_image }}
+  {{ $linkToCover = strings.Trim . "/" | urls.RelURL }}
+  {{ with $.Resources.GetMatch . }}
+    {{ $linkToCover = .RelPermalink }}
+  {{ end }}
+{{ else }}
+  {{ with .Resources.ByType "image" }}
+    {{ with .GetMatch (fmt.Printf "**{%s}*" $matches) }}
+      {{ $linkToCover = .RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $linkToCover }}
+
+
